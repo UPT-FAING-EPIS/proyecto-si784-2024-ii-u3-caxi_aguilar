@@ -22,13 +22,15 @@ jobs:
         with:
           dotnet-version: 8.0.x
 
+      # Install Node.js and dependencies
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
       # Install Playwright dependencies
       - name: Install Playwright dependencies
         run: npx playwright install-deps
-
-      # Install dependencies
-      - name: Install npm dependencies
-        run: npm install
 
       # Restore NuGet dependencies
       - name: Restore .NET dependencies
@@ -37,6 +39,10 @@ jobs:
       # Build the project
       - name: Build the project
         run: dotnet build --no-restore --configuration Release
+
+      # Install Playwright browsers
+      - name: Install Playwright browsers
+        run: npx playwright install
 
       # Run tests with code coverage
       - name: Run tests and collect coverage
@@ -54,8 +60,3 @@ jobs:
         with:
           name: test-report
           path: TestReport
-
-      # Playwright tests
-      - name: Run Playwright tests
-        run: |
-          dotnet test
