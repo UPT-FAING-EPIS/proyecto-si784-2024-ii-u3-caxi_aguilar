@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "G:\\Calidad y Pruebas\\Topicos\\Topicos\\UITests\\UITests.csproj": {}
+    "G:\\Calidad y Pruebas\\Proyecto 3 unidad\\proyecto-si784-2024-ii-u3-caxi_aguilar\\UITests\\UITests.csproj": {}
   },
   "projects": {
-    "G:\\Calidad y Pruebas\\Topicos\\Topicos\\UITests\\UITests.csproj": {
+    "G:\\Calidad y Pruebas\\Proyecto 3 unidad\\proyecto-si784-2024-ii-u3-caxi_aguilar\\UITests\\UITests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Calidad y Pruebas\\Topicos\\Topicos\\UITests\\UITests.csproj",
+        "projectUniqueName": "G:\\Calidad y Pruebas\\Proyecto 3 unidad\\proyecto-si784-2024-ii-u3-caxi_aguilar\\UITests\\UITests.csproj",
         "projectName": "UITests",
-        "projectPath": "G:\\Calidad y Pruebas\\Topicos\\Topicos\\UITests\\UITests.csproj",
+        "projectPath": "G:\\Calidad y Pruebas\\Proyecto 3 unidad\\proyecto-si784-2024-ii-u3-caxi_aguilar\\UITests\\UITests.csproj",
         "packagesPath": "C:\\Users\\100pr\\.nuget\\packages\\",
-        "outputPath": "G:\\Calidad y Pruebas\\Topicos\\Topicos\\UITests\\obj\\",
+        "outputPath": "G:\\Calidad y Pruebas\\Proyecto 3 unidad\\proyecto-si784-2024-ii-u3-caxi_aguilar\\UITests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\100pr\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -70,6 +70,12 @@
             "Microsoft.Playwright.MSTest": {
               "target": "Package",
               "version": "[1.49.0, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.2, )"
             }
           },
           "imports": [

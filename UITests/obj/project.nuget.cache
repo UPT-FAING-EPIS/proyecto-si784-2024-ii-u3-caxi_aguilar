@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "uaiY+u4rDwA=",
+  "dgSpecHash": "G7NODwVXrdY=",
   "success": true,
-  "projectFilePath": "G:\\Calidad y Pruebas\\Topicos\\Topicos\\UITests\\UITests.csproj",
+  "projectFilePath": "G:\\Calidad y Pruebas\\Proyecto 3 unidad\\proyecto-si784-2024-ii-u3-caxi_aguilar\\UITests\\UITests.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\100pr\\.nuget\\packages\\coverlet.collector\\6.0.2\\coverlet.collector.6.0.2.nupkg.sha512",
     "C:\\Users\\100pr\\.nuget\\packages\\microsoft.applicationinsights\\2.22.0\\microsoft.applicationinsights.2.22.0.nupkg.sha512",
     "C:\\Users\\100pr\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\9.0.0\\microsoft.bcl.asyncinterfaces.9.0.0.nupkg.sha512",
     "C:\\Users\\100pr\\.nuget\\packages\\microsoft.codecoverage\\17.12.0\\microsoft.codecoverage.17.12.0.nupkg.sha512",
