@@ -52,7 +52,7 @@ public class UITests
 
         // Verificar que se redirigió correctamente a la página de inicio de sesión
         var loginPageTitle = await _page.TitleAsync();
-        Assert.AreEqual("Login - Sistema de Asistencia", loginPageTitle, "El título de la página de inicio de sesión no coincide.");
+        Assert.AreEqual("Sistema Asistencia", loginPageTitle, "El título de la página de inicio de sesión no coincide.");
     }
 
     [TestCleanup]

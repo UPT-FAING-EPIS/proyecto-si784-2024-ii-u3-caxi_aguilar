@@ -1,0 +1,61 @@
+name: Generate Test Report
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build-and-test:
+    name: Build, Test, and Generate Report
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Setup .NET
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+
+      # Install Playwright dependencies
+      - name: Install Playwright dependencies
+        run: npx playwright install-deps
+
+      # Install dependencies
+      - name: Install npm dependencies
+        run: npm install
+
+      # Restore NuGet dependencies
+      - name: Restore .NET dependencies
+        run: dotnet restore
+
+      # Build the project
+      - name: Build the project
+        run: dotnet build --no-restore --configuration Release
+
+      # Run tests with code coverage
+      - name: Run tests and collect coverage
+        run: dotnet test --collect:"XPlat Code Coverage"
+
+      # Generate test report
+      - name: Generate Test Report
+        run: |
+          dotnet tool install -g dotnet-reportgenerator-globaltool
+          ReportGenerator "-reports:**/coverage.cobertura.xml" "-targetdir:TestReport" -reporttypes:HTML
+
+      # Upload test report as artifact
+      - name: Upload Test Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-report
+          path: TestReport
+
+      # Playwright tests
+      - name: Run Playwright tests
+        run: |
+          dotnet test
