@@ -51,5 +51,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-private-property-in-object": "^7.25.9",
+    "babel-plugin-istanbul": "^7.0.0",
+    "nyc": "^17.1.0"
   }
 }

@@ -17,7 +17,7 @@ public class UITests
         _playwright = await Playwright.CreateAsync();
         _browser = await _playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
         {
-            Headless = true // Cambia a false si deseas ver la interacción en el navegador
+            Headless = true // Ver la interacción en el navegador
         });
     }
 
@@ -26,10 +26,11 @@ public class UITests
     {
         _context = await _browser!.NewContextAsync();
         _page = await _context.NewPageAsync();
+        _page.SetDefaultTimeout(60000);
     }
 
     [TestMethod]
-    public async Task HomePage_ShouldDisplayCorrectElements()
+     public async Task HomePage_ShouldDisplayCorrectElements()
     {
         // Navegar a la página Home
         await _page!.GotoAsync("http://localhost:3000");
@@ -55,6 +56,62 @@ public class UITests
         Assert.AreEqual("Sistema Asistencia", loginPageTitle, "El título de la página de inicio de sesión no coincide.");
     }
 
+    [TestMethod]
+    public async Task LoginPage_ShouldValidateEmptyFields()
+    {
+        await _page!.GotoAsync("http://localhost:3000/login");
+
+        // Intentar enviar el formulario sin completar campos
+        await _page.ClickAsync("button[type='submit']");
+
+        // Verificar mensajes de error
+        var emailError = await _page.TextContentAsync("#email-error");
+        var passwordError = await _page.TextContentAsync("#password-error");
+
+        Assert.AreEqual("El correo electrónico es obligatorio.", emailError, "El mensaje de error para el correo no coincide.");
+        Assert.AreEqual("La contraseña es obligatoria.", passwordError, "El mensaje de error para la contraseña no coincide.");
+    }
+
+    [TestMethod]
+    public async Task LoginPage_ShouldLoginSuccessfully()
+    {
+        await _page!.GotoAsync("http://localhost:3000/login");
+
+        // Completar el formulario de inicio de sesión
+        await _page.FillAsync("#username", "chino@gmail.com");
+        await _page.FillAsync("#password", "soycabro");
+        await _page.ClickAsync("button[type='submit']");
+
+        // Verificar redirección al dashboard
+        await _page.WaitForURLAsync("http://localhost:3000/dashboard");
+        var dashboardTitle = await _page.TextContentAsync("h1");
+        Assert.AreEqual("Panel de Control", dashboardTitle, "El título del dashboard no coincide.");
+    }
+
+    [TestMethod]
+    public async Task Sidebar_ShouldNavigateToAttendance()
+    {
+        await _page!.GotoAsync("http://localhost:3000/dashboard");
+
+        // Hacer clic en el enlace de Asistencias
+        await _page.ClickAsync("button:has-text('Asistencias')");
+        await _page.WaitForURLAsync("http://localhost:3000/attendance");
+
+        // Verificar que la página de asistencias se haya cargado
+        var attendanceTitle = await _page.TextContentAsync("h1");
+        Assert.AreEqual("Asistencias", attendanceTitle, "El título de la página de asistencias no coincide.");
+    }
+
+    [TestMethod]
+    public async Task Dashboard_ShouldDisplayWelcomeMessage()
+    {
+        await _page!.GotoAsync("http://localhost:3000/dashboard");
+
+        // Verificar que el mensaje de bienvenida se muestre
+        var welcomeMessage = await _page.TextContentAsync(".welcome-message");
+        Assert.AreEqual("¡Bienvenido, testuser!", welcomeMessage, "El mensaje de bienvenida no coincide.");
+    }
+
     [TestCleanup]
     public async Task TestCleanup()
     {
@@ -77,4 +134,3 @@ public class UITests
         _playwright?.Dispose();
     }
 }
-

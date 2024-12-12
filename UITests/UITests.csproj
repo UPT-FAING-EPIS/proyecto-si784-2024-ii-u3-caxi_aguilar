@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <CodeCoverageEnabled>true</CodeCoverageEnabled>
     <TargetFramework>net8.0</TargetFramework>
     <IsTestProject>true</IsTestProject>
     <LangVersion>latest</LangVersion>
