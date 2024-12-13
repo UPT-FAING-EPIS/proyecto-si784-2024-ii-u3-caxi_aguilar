@@ -17,16 +17,20 @@ public class UITests
         _playwright = await Playwright.CreateAsync();
         _browser = await _playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
         {
-            Headless = true // Ver la interacción en el navegador
+            Headless = false
         });
     }
 
     [TestInitialize]
     public async Task TestSetup()
     {
-        _context = await _browser!.NewContextAsync();
+        Console.WriteLine("Creando contexto con grabación de video...");
+        _context = await _browser!.NewContextAsync(new BrowserNewContextOptions
+        {
+            RecordVideoDir = "videos/" 
+        });
+        Console.WriteLine("Contexto creado con grabación de video habilitada.");
         _page = await _context.NewPageAsync();
-        _page.SetDefaultTimeout(60000);
     }
 
     [TestMethod]
@@ -100,17 +104,25 @@ public class UITests
 
         // Verificar que aparezca el mensaje de validación para el correo electrónico
         var emailValidationMessage = await _page.Locator("input[type='email']").EvaluateAsync<string>("el => el.validationMessage");
-        Assert.AreEqual("Please fill out this field.", emailValidationMessage, "El mensaje de validación para el correo electrónico no coincide.");
+        Assert.AreEqual("Completa este campo", emailValidationMessage, "El mensaje de validación para el correo electrónico no coincide.");
 
         // Verificar que aparezca el mensaje de validación para la contraseña
         var passwordValidationMessage = await _page.Locator("input[type='password']").EvaluateAsync<string>("el => el.validationMessage");
-        Assert.AreEqual("Please fill out this field.", passwordValidationMessage, "El mensaje de validación para la contraseña no coincide.");
+        Assert.AreEqual("Completa este campo", passwordValidationMessage, "El mensaje de validación para la contraseña no coincide.");
     }
+
     [TestCleanup]
     public async Task TestCleanup()
     {
+        if (_page != null && _page.Video != null)
+        {
+            var videoPath = await _page.Video.PathAsync();
+            Console.WriteLine($"Video guardado en: {videoPath}");
+        }
+
         if (_context != null)
         {
+            
             await _context.CloseAsync();
             _context = null; // Limpieza explícita
         }
@@ -122,7 +134,7 @@ public class UITests
         if (_browser != null)
         {
             await _browser.CloseAsync();
-            _browser = null; // Limpieza explícita
+            
         }
 
         _playwright?.Dispose();
