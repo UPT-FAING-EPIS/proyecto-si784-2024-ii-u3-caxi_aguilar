@@ -24,12 +24,10 @@ public class UITests
     [TestInitialize]
     public async Task TestSetup()
     {
-        
         _context = await _browser!.NewContextAsync(new BrowserNewContextOptions
         {
             RecordVideoDir = "videos/" 
         });
-        Console.WriteLine("Contexto creado con grabación de video habilitada.");
         _page = await _context.NewPageAsync();
     }
 

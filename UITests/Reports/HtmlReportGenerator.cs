@@ -23,25 +23,34 @@ public class HtmlReportGenerator
         htmlBuilder.AppendLine("<body>");
         htmlBuilder.AppendLine("<h1>Reporte de Pruebas con Videos</h1>");
 
-        // Agregar cada video al reporte
-        var testDirectories = Directory.GetDirectories(videoDirectory);
-        foreach (var testDir in testDirectories)
+        // Buscar todos los videos en la carpeta especificada
+        if (Directory.Exists(videoDirectory))
         {
-            var testName = Path.GetFileName(testDir);
-            htmlBuilder.AppendLine($"<div class='test'>");
-            htmlBuilder.AppendLine($"<h2>Prueba: {testName}</h2>");
-
-            var videoFiles = Directory.GetFiles(testDir, "*.webm");
-            foreach (var videoFile in videoFiles)
+            var videoFiles = Directory.GetFiles(videoDirectory, "*.webm");
+            if (videoFiles.Length == 0)
             {
-                var relativePath = Path.Combine("videos", testName, Path.GetFileName(videoFile));
-                htmlBuilder.AppendLine($"<video controls>");
-                htmlBuilder.AppendLine($"<source src='{relativePath}' type='video/webm'>");
-                htmlBuilder.AppendLine("Tu navegador no soporta la reproducción de videos.");
-                htmlBuilder.AppendLine("</video>");
+                htmlBuilder.AppendLine("<p>No se encontraron videos en la carpeta especificada.</p>");
             }
+            else
+            {
+                foreach (var videoFile in videoFiles)
+                {
+                    var fileName = Path.GetFileName(videoFile);
+                    var relativePath = Path.Combine("videos", fileName).Replace("\\", "/");
 
-            htmlBuilder.AppendLine("</div>");
+                    htmlBuilder.AppendLine($"<div class='test'>");
+                    htmlBuilder.AppendLine($"<h2>Video: {fileName}</h2>");
+                    htmlBuilder.AppendLine($"<video controls>");
+                    htmlBuilder.AppendLine($"<source src='{relativePath}' type='video/webm'>");
+                    htmlBuilder.AppendLine("Tu navegador no soporta la reproducción de videos.");
+                    htmlBuilder.AppendLine("</video>");
+                    htmlBuilder.AppendLine("</div>");
+                }
+            }
+        }
+        else
+        {
+            htmlBuilder.AppendLine("<p>No se encontró la carpeta de videos.</p>");
         }
 
         // Cerrar el HTML

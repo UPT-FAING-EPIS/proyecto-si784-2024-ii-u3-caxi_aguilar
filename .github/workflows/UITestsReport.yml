@@ -1,62 +1,40 @@
-name: Generate Test Report
+name: Publish Test Report
 
 on:
   push:
     branches:
-      - main
-  pull_request:
+      - main 
 
 jobs:
-  build-and-test:
-    name: Build, Test, and Generate Report
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout code
+      # 1. Configura el repositorio
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Setup .NET
+      # 2. Configura .NET
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: 8.0
 
-      # Install Node.js and dependencies
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      # Install Playwright dependencies
-      - name: Install Playwright dependencies
-        run: npx playwright install-deps
-
-      # Restore NuGet dependencies
-      - name: Restore .NET dependencies
+      # 3. Instala dependencias
+      - name: Restore dependencies
         run: dotnet restore
 
-      # Build the project
-      - name: Build the project
-        run: dotnet build --no-restore --configuration Release
-
-      # Install Playwright browsers
-      - name: Install Playwright browsers
-        run: npx playwright install
-
-      # Run tests with code coverage
-      - name: Run tests and collect coverage
-        run: dotnet test --collect:"XPlat Code Coverage"
-
-      # Generate test report
-      - name: Generate Test Report
+      # 4. Ejecuta las pruebas
+      - name: Run tests and generate report
         run: |
-          dotnet tool install -g dotnet-reportgenerator-globaltool
-          ReportGenerator "-reports:**/coverage.cobertura.xml" "-targetdir:TestReport" -reporttypes:HTML
+          dotnet test --collect:"XPlat Code Coverage"
+          # Genera el reporte HTML
+          mkdir -p output
+          mv TestReport.html output/
 
-      # Upload test report as artifact
-      - name: Upload Test Report
-        uses: actions/upload-artifact@v3
+      # 5. Despliega el reporte en GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          name: test-report
-          path: TestReport
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output
