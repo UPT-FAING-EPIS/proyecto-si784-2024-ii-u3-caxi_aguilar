@@ -3,7 +3,7 @@ name: Publish Test Report
 on:
   push:
     branches:
-      - main 
+      - main # Cambia "main" por el nombre de tu rama principal si es diferente
 
 jobs:
   build-and-deploy:
@@ -18,21 +18,25 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 8.0
+          dotnet-version: 7.0
 
-      # 3. Instala dependencias
+      # 3. Instala los navegadores de Playwright
+      - name: Install Playwright Browsers
+        run: |
+          npx playwright install --with-deps
+
+      # 4. Instala dependencias de .NET
       - name: Restore dependencies
         run: dotnet restore
 
-      # 4. Ejecuta las pruebas
+      # 5. Ejecuta las pruebas y genera el reporte
       - name: Run tests and generate report
         run: |
-          dotnet test --collect:"XPlat Code Coverage"
-          # Genera el reporte HTML
+          dotnet test 
           mkdir -p output
-          mv TestReport.html output/
+          mv UITests/bin/Debug/net8.0/TestReport.html output/
 
-      # 5. Despliega el reporte en GitHub Pages
+      # 6. Despliega el reporte en GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
