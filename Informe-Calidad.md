@@ -230,7 +230,7 @@ El cronograma se diseñó en función de las observaciones realizadas por SonarQ
 | Análisis inicial con SonarQube y Snyk    | Equipo de QA              | 1 semana     | SonarQube, Snyk            | Código fuente de UPT-SYNC     |
 | Refactorización del código crítico       | Desarrollador Backend     | 2 semanas    | VS Code, SonarQube         | Guías de buenas prácticas     |
 | Corrección de vulnerabilidades           | Desarrollador Backend     | 1 semana     | Snyk, NPM                  | Actualización de dependencias |
-| Implementación de pruebas unitarias      | Equipo de Desarrollo      | 1 semana     | Jest, Postman              | Cobertura de código           |
+| Implementación de pruebas unitarias      | Equipo de Desarrollo      | 1 semana     | Jest, Mocha              | Cobertura de código           |
 | Mejoras en la interfaz gráfica (UI/UX)  | Diseñador UI/UX           | 1 semana     | Figma, React               | Diseño de interfaces          |
 | Pruebas finales y validación             | Equipo de QA              | 1 semana     | SonarQube, Snyk, Jest      | Reportes de calidad           |
 | Documentación técnica y despliegue       | Líder del proyecto        | 1 semana     | GitHub, Swagger, Markdown  | Documentos actualizados       |
@@ -667,10 +667,13 @@ Se logró una cobertura del 90% del código con pruebas unitarias e integrales, 
 
 | **Tipo de Prueba**       | **Cobertura Lograda** | **Herramienta**      |
 |--------------------------|-----------------------|----------------------|
-| Pruebas Unitarias        | 90%                  | Jest                |
-| Pruebas de Integración   | 85%                  | Postman             |
-| Pruebas Funcionales      | 100%                 | Selenium            |
-| Pruebas de Seguridad     | 100%                 | OWASP ZAP, Snyk     |
+| Pruebas Unitarias        | 88%                  | Jest                |
+| Pruebas de Integración   | 67%                  | Jest, Mocha          |
+| Pruebas Mutantes     | 100%                 | Stryker          |
+| Pruebas de Seguridad     | 100%                 | SonarQube, Snyk y Seemgrep    |
 
 
 ---
+
+**Nota:** Esta sección integra los diagramas y las pruebas necesarias para garantizar que **UPT-SYNC** cumpla con los estándares más altos de calidad, rendimiento y seguridad. Si necesitas más detalles sobre los diagramas o herramientas específicas, revisa los archivos en la carpeta correspondiente del repositorio.
+
