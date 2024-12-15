@@ -1,4 +1,4 @@
-name: Pruebas SONAR
+name: SONAR Test
 
 env:
   DOTNET_VERSION: '8.0'                     # la versión de .NET
