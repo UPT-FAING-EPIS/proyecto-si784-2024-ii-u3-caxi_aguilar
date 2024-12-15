@@ -1,6 +1,9 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/x1Nq8_Zo)
 [![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=17489091)
 
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/-i7BWR5S)
+[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=17275129)
+
 <div align="center">
 
 ![./media/media/image1.png](./media/logo-upt.png)
@@ -43,14 +46,14 @@ A continuación, se presentan los enlaces a los reportes generados durante el an
 1. **Reporte de Cobertura de Pruebas Unitarias:**  
    [Ver Reporte de Cobertura de Pruebas Unitarias](https://upt-faing-epis.github.io/proyecto-si784-2024-ii-u2-caxi_aguilar_chata/unit-tests)  
    Este reporte muestra los resultados de las pruebas unitarias realizadas sobre los módulos principales de la aplicación.  
-   - **Cobertura Total Alcanzada:** 90%  
+   - **Cobertura Total Alcanzada:** 88%  
    - **Herramienta Utilizada:** Jest  
 
 2. **Reporte de Cobertura de Pruebas de Integración:**  
    [Ver Reporte de Cobertura de Pruebas de Integración](https://upt-faing-epis.github.io/proyecto-si784-2024-ii-u2-caxi_aguilar_chata/integration-tests)  
    Este informe detalla los resultados de las pruebas de integración, enfocándose en la interacción entre los diferentes módulos de la aplicación.  
-   - **Cobertura Total Alcanzada:** 85%  
-   - **Herramienta Utilizada:** Postman  
+   - **Cobertura Total Alcanzada:** 67%  
+   - **Herramienta Utilizada:** Jest, Mocha  
 
 ---
 
@@ -62,7 +65,6 @@ A continuación, se presentan los enlaces a los reportes generados durante el an
    - **Propósito:** Identificar posibles fallos en las pruebas automatizadas.
 
 4. **Reporte de Aceptación:**  
-   [Ver Reporte de Aceptación](https://upt-faing-epis.github.io/proyecto-si784-2024-ii-u3-hernandez_contreras_paja/LivingDocReport.html)  
    Documenta los escenarios de prueba funcional que validan los requerimientos del usuario final.  
    - **Propósito:** Garantizar que las funcionalidades cumplen con las expectativas del usuario.
 
@@ -71,39 +73,18 @@ A continuación, se presentan los enlaces a los reportes generados durante el an
 ### **10.3 Reportes de Seguridad**
 
 5. **Reporte de Análisis de Contenedor (Snyk):**  
-   [Ver Reporte de Seguridad - Snyk](https://upt-faing-epis.github.io/proyecto-si784-2024-ii-u3-hernandez_contreras_paja/container-test-result.html)  
+   [Ver Reporte de Seguridad - Snyk](https://upt-faing-epis.github.io/proyecto-si784-2024-ii-u2-caxi_aguilar_chata/snyk-report/)  
    Resultado del análisis de vulnerabilidades en las dependencias y contenedores utilizados en el proyecto.  
    - **Herramienta Utilizada:** Snyk  
 
 6. **Reporte de Análisis Estático de Código (Semgrep):**  
-   [Ver Reporte de Seguridad - Semgrep](https://upt-faing-epis.github.io/proyecto-si784-2024-ii-u3-hernandez_contreras_paja/semgrep-report.html)  
+   [Ver Reporte de Seguridad - Semgrep](https://upt-faing-epis.github.io/proyecto-si784-2024-ii-u2-caxi_aguilar_chata/semgrep-report/)  
    Este análisis detecta posibles problemas de seguridad y estándares de código no cumplidos.  
    - **Herramienta Utilizada:** Semgrep  
 
 ---
 
-### **Resumen General de Reportes**
-
-| **Reporte**                         | **Propósito**                                   | **Herramienta**      | **Enlace**                                                                 |
-|-------------------------------------|-----------------------------------------------|----------------------|---------------------------------------------------------------------------|
-| Cobertura de Pruebas Unitarias      | Validar el correcto funcionamiento del código  | Jest                | [Ver Reporte](https://upt-faing-epis.github.io/proyecto-si784-2024-ii-u2-caxi_aguilar_chata/unit-tests)  |
-| Cobertura de Pruebas de Integración | Evaluar la interacción entre módulos           | Jest, Mocha            | [Ver Reporte](https://upt-faing-epis.github.io/proyecto-si784-2024-ii-u2-caxi_aguilar_chata/integration-tests) |
-| Reporte de Mutaciones               | Verificar la robustez de las pruebas           | Stryke            | [Ver Reporte](https://upt-faing-epis.github.io/proyecto-si784-2024-ii-u3-hernandez_contreras_paja/mutation-report.html) |
-| Reporte de Aceptación               | Validar funcionalidades finales                | LivingDoc           | [Ver Reporte](https://upt-faing-epis.github.io/proyecto-si784-2024-ii-u3-hernandez_contreras_paja/LivingDocReport.html) |
-| Reporte de Seguridad (Snyk)         | Detectar vulnerabilidades en dependencias      | Snyk                | [Ver Reporte](https://upt-faing-epis.github.io/proyecto-si784-2024-ii-u3-hernandez_contreras_paja/container-test-result.html) |
-| Reporte de Seguridad (Semgrep)      | Identificar problemas en estándares de código  | Semgrep             | [Ver Reporte](https://upt-faing-epis.github.io/proyecto-si784-2024-ii-u3-hernandez_contreras_paja/semgrep-report.html) |
-
----
-
-**Nota:** Los reportes enlazados están alojados en GitHub Pages y documentan exhaustivamente los análisis y resultados de calidad, seguridad y pruebas implementados en **UPT-SYNC**.  
-
-
-
-* Luis Eduardo Caxi Calani
-* Victor aguilar Pinto
-
-
-## Pruebas de Interfaz
+### **10.4 Reportes de Prueba de Interfaz**  
 Las pruebas de interfaz se realizan utilizando Playwright y están enfocadas en validar la interacción del usuario con la aplicación.
 
 * Objetivos de las Pruebas de Interfaz
@@ -170,5 +151,16 @@ Videos de las pruebas realizadas:
 Página con los videos de las pruebas:
 ![image](https://github.com/user-attachments/assets/8d75dbd1-296f-4455-92bb-654a8334840d)
 
+
+---
+
+
+
+**Nota:** Los reportes enlazados están alojados en GitHub Pages y documentan exhaustivamente los análisis y resultados de calidad, seguridad y pruebas implementados en **UPT-SYNC**.  
+
+
+
+* Luis Eduardo Caxi Calani
+* Victor aguilar Pinto
 
 
